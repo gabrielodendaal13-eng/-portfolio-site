@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <!-- Head: metadata and stylesheet for the Interests / Accessibility page -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gabriel's interests in web accessibility, inclusive design, and WCAG standards">
+  <meta name="author" content="Gabriel">
+  <meta name="theme-color" content="#2c5aa0">
+  <link rel="manifest" href="manifest.json">
+  <title>My Interests - Web Accessibility & Inclusive Design</title>
+  <link rel="stylesheet" href="basestyle.css">
+</head>
+<body>
+<div class="container">
+  <!-- Navigation: links to the main pages of the portfolio -->
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="qualifications.html">Qualifications</a></li>
+      <li><a href="interest.html">Interests</a></li>
+      <li><a href="demos.html">Demos</a></li>
+      <li><a href="jsdemo.html">JavaScript Demo</a></li>
+      <li><a href="cssdemo.html">CSS Demo</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Header: page heading describing the focus on accessibility and inclusive design -->
+  <header>
+    <h1>My Interests: Web Accessibility & Inclusive Design</h1>
+  </header>
+  
+  <main>
+    <!-- Intro Section: explains why accessibility matters and the author's commitment -->
+    <section class="intro-section">
+      <p><strong>Why Accessibility Matters</strong></p>
+      <p>Web accessibility is not just a technical requirement—it's a fundamental principle of ethical web development. It ensures that websites and applications are usable by everyone, including people with disabilities. This is a passion of mine, and I believe it should be at the heart of every web project.</p>
+      <p>As a developer, I'm committed to creating digital experiences that include rather than exclude. The Web Accessibility Initiative (WAI) guidelines provide the framework, but inclusive thinking must guide the implementation.</p>
+    </section>
+  
+    <!-- In-page Navigation: quick links to major sections on accessibility topics -->
+    <nav aria-label="Page sections">
+      <ul>
+        <li><a href="#wcag-standards">WCAG Standards</a></li>
+        <li><a href="#wcag-levels">Compliance Levels</a></li>
+        <li><a href="#practical-techniques">Practical Techniques</a></li>
+        <li><a href="#real-world-impact">Real-World Impact</a></li>
+      </ul>
+    </nav>
+  
+    <!-- WCAG Standards: explains POUR principles and why semantic HTML matters -->
+    <section id="wcag-standards">
+      <h2>Understanding WCAG Standards</h2>
+
+      <p>The Web Content Accessibility Guidelines (WCAG) are developed by the World Wide Web Consortium (W3C) and provide a set of recommendations for making web content more accessible to people with disabilities. These guidelines are organized around four core principles:</p>
+
+      <div class="highlight-box">
+        <h3>The Four Principles: POUR</h3>
+        <div class="principles-grid">
+          <div class="principle">
+            <h4>Perceivable</h4>
+            <p>Information and user interface components must be presentable to users in ways they can perceive. This means providing text alternatives for images, captions for videos, and ensuring sufficient color contrast.</p>
+          </div>
+          <div class="principle">
+            <h4>Operable</h4>
+            <p>User interface components and navigation must be operable. Users must be able to navigate using keyboard alone, have sufficient time to read and use content, and avoid seizure-inducing content.</p>
+          </div>
+          <div class="principle">
+            <h4>Understandable</h4>
+            <p>Information and the operation of user interfaces must be understandable. Text must be readable and comprehensible, pages must appear and operate in predictable ways, and users must be helped to avoid and correct mistakes.</p>
+          </div>
+          <div class="principle">
+            <h4>Robust</h4>
+            <p>Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies. This means using valid, semantic HTML and following web standards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- WCAG Levels: explains conformance levels (A, AA, AAA) and practical targets -->
+    <section id="wcag-levels">
+      <h2>WCAG Level Compliance</h2>
+
+      <p>WCAG standards are organized into three levels of conformance, each building on the previous one:</p>
+
+      <div class="wcag-levels">
+        <div class="level-card">
+          <h4>Level A</h4>
+          <p><strong>Essential</strong></p>
+          <p>The minimum level of accessibility. Addresses the most critical barriers.</p>
+        </div>
+        <div class="level-card">
+          <h4>Level AA</h4>
+          <p><strong>Recommended</strong></p>
+          <p>Removes significant barriers for most people. The target for most web content today.</p>
+        </div>
+        <div class="level-card">
+          <h4>Level AAA</h4>
+          <p><strong>Advanced</strong></p>
+          <p>Enhanced accessibility for specialized content. Not always practical for all websites.</p>
+        </div>
+      </div>
+
+      <p>Most modern organizations aim for <strong>WCAG 2.1 Level AA</strong> compliance, which addresses the majority of accessibility concerns while remaining practical to implement.</p>
+    </section>
+  
+    <!-- Practical Techniques: concrete approaches such as semantic HTML, contrast, images and keyboard access -->
+    <section id="practical-techniques">
+      <h2>Practical Accessibility Techniques</h2>
+
+      <h3>1. Semantic HTML</h3>
+      <p>Using semantic HTML elements (<code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code>) helps screen readers understand page structure and meaning.</p>
+
+      <div class="code-example">
+        &lt;!-- Good: Semantic --&gt;<br>
+        &lt;nav&gt;&lt;a href="home"&gt;Home&lt;/a&gt;&lt;/nav&gt;<br>
+        &lt;main&gt;<br>
+          &lt;article&gt;<br>
+            &lt;h1&gt;Page Title&lt;/h1&gt;<br>
+            &lt;p&gt;Content here&lt;/p&gt;<br>
+          &lt;/article&gt;<br>
+        &lt;/main&gt;
+      </div>
+
+      <h3>2. Color Contrast</h3>
+      <p>Text must have sufficient contrast against its background. WCAG AA requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text.</p>
+
+      <div class="highlight-box">
+        <p><strong>Testing Tools:</strong> WebAIM Contrast Checker, Lighthouse, or axe DevTools can help measure contrast ratios on your website.</p>
+      </div>
+
+      <h3>3. Image Accessibility</h3>
+      <p>All images should include descriptive alt text that conveys the image's purpose. For decorative images, use empty alt attributes.</p>
+
+      <div class="code-example">
+        &lt;!-- Informative image --&gt;<br>
+        &lt;img src="chart.png" alt="Sales growth chart showing 25% increase in Q3"&gt;<br>
+        <br>
+        &lt;!-- Decorative image --&gt;<br>
+        &lt;img src="divider.png" alt=""&gt;
+      </div>
+
+      <h3>4. Keyboard Navigation</h3>
+      <p>All interactive elements must be accessible via keyboard. This includes providing visible focus indicators for links and buttons.</p>
+
+      <h3>5. Form Accessibility</h3>
+      <p>Forms must have properly associated labels, clear error messages, and instructions for completing required fields.</p>
+    </section>
+  
+    <!-- Real-World Impact: explains how accessibility benefits a wide range of users beyond those with disabilities -->
+    <section id="real-world-impact">
+      <h2>Real-World Impact</h2>
+
+      <div class="impact-section">
+        <h3>Why Accessibility Benefits Everyone</h3>
+        <p>While accessibility features are essential for people with disabilities, they benefit a much broader audience:</p>
+        <ol>
+          <li><strong>Voice Navigation:</strong> Useful for people with mobility impairments, but also helpful while driving or multitasking</li>
+          <li><strong>Captions:</strong> Help deaf users, but also people in noisy environments or using devices without sound</li>
+          <li><strong>Simple Language:</strong> Assists people with cognitive disabilities, but also non-native speakers and mobile users on slow connections</li>
+          <li><strong>Large Text:</strong> Essential for people with low vision, but helpful for aging users and anyone reading on small screens</li>
+          <li><strong>High Contrast:</strong> Aids people with color blindness and improves readability for everyone</li>
+        </ol>
+      </div>
+    </section>
+  
+    <!-- Future Learning Goals: topics the author plans to study further in accessibility and inclusive design -->
+    <section>
+      <h2>Future Learning Goals</h2>
+
+      <p>My interest in accessibility extends beyond compliance. I'm committed to continuous learning in these areas:</p>
+
+      <ul>
+        <li>WCAG 2.2 and emerging accessibility standards</li>
+        <li>Advanced ARIA (Accessible Rich Internet Applications) patterns for complex interfaces</li>
+        <li>User testing with assistive technology and disabled users</li>
+        <li>Accessibility in emerging technologies (AI, voice interfaces, VR/AR)</li>
+        <li>Building an inclusive design culture within development teams</li>
+        <li>Automating accessibility testing while understanding its limitations</li>
+      </ul>
+    </section>
+  
+  <section>
+    <div class="quote">
+      <p><em>"The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect."</em> — Tim Berners-Lee, inventor of the World Wide Web</p>
+    </div>
+  </section>
+  </main>
+  
+  <footer>
+    <p>Gabriel (2024ST001) - Software Development Module Assignment - University of Staffordshire</p>
+  </footer>
+</div>
+</body>
+</html>

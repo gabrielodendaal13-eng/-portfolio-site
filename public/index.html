@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <!-- Head: contains metadata and stylesheet declaration for the site -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gabriel's professional CV and portfolio - Software developer and technology enthusiast">
+  <meta name="author" content="Gabriel">
+  <meta name="theme-color" content="#2c5aa0">
+  <link rel="manifest" href="manifest.json">
+  <title>Gabriel - Software Developer & Technology Enthusiast</title>
+  <link rel="stylesheet" href="basestyle.css">
+</head>
+<body>
+<div class="container">
+  <!-- Navigation: top-level links to each main page in the site -->
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="qualifications.html">Qualifications</a></li>
+      <li><a href="interest.html">Interests</a></li>
+      <li><a href="demos.html">Demos</a></li>
+      <li><a href="jsdemo.html">JavaScript Demo</a></li>
+      <li><a href="cssdemo.html">CSS Demo</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Header: main page title and short tagline -->
+  <header>
+    <h1>Gabriel</h1>
+    <p class="tagline">Software Developer & Technology Enthusiast</p>
+  </header>
+  
+  <main>
+    <!-- Main: primary page content including decorative SVG and sections below -->
+    <svg width="60" height="60" viewBox="0 0 60 60" style="display: block; margin: 20px auto;" aria-label="Code brackets icon">
+      <rect width="60" height="60" fill="none"/>
+      <path d="M 15 15 L 10 30 L 15 45" stroke="#2c5aa0" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M 45 15 L 50 30 L 45 45" stroke="#2c5aa0" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </svg>
+  
+  <section class="about-content">
+    <h2>About Me</h2>
+    <p>Welcome to my professional portfolio! I'm Gabriel, a passionate Computer Science student at the University of Staffordshire with a strong interest in software development and emerging technologies.</p>
+    
+    <p>I'm currently in my first year of study, where I'm building a solid foundation in programming languages, web technologies, cybersecurity, and networking. I approach every project with a commitment to clean code, accessibility, and user-centered design principles.</p>
+    
+    <p>Beyond coursework, I'm driven by a genuine enthusiasm for problem-solving and creating digital solutions that make an impact. I believe in continuous learning and staying updated with industry best practices and modern development standards.</p>
+  </section>
+  
+  <section>
+    <h2>Key Skills</h2>
+    <h3>Programming & Development</h3>
+    <div class="skills-list">
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">Java</span>
+      <span class="skill-tag">HTML5</span>
+      <span class="skill-tag">CSS3</span>
+      <span class="skill-tag">Web Development</span>
+    </div>
+    
+    <h3>Technical Knowledge</h3>
+    <div class="skills-list">
+      <span class="skill-tag">Networking</span>
+      <span class="skill-tag">Cybersecurity</span>
+      <span class="skill-tag">Web Accessibility (WCAG)</span>
+      <span class="skill-tag">Operating Systems</span>
+      <span class="skill-tag">Digital Technologies</span>
+      <span class="skill-tag">Problem Solving</span>
+    </div>
+  </section>
+  
+  <section>
+    <h2>Interests & Hobbies</h2>
+    <ul>
+      <li><strong>Game Development:</strong> Exploring game design mechanics and learning how to build interactive digital experiences</li>
+      <li><strong>Open Source Contribution:</strong> Contributing to open-source projects to improve my coding skills and give back to the community</li>
+      <li><strong>Tech Blogging:</strong> Writing about technology trends, coding tips, and lessons learned from projects</li>
+      <li><strong>Cybersecurity Research:</strong> Staying informed about security vulnerabilities and best practices for secure software development</li>
+      <li><strong>UI/UX Design:</strong> Passionate about creating intuitive and accessible user interfaces that provide excellent user experiences</li>
+      <li><strong>Competitive Programming:</strong> Participating in coding challenges to sharpen problem-solving abilities</li>
+    </ul>
+  </section>
+  
+    <!-- Call to Action: links to explore qualifications and demos, plus install button for PWA -->
+    <section class="cta-section">
+      <h2>Explore My Work</h2>
+      <p>Take a closer look at my academic qualifications, technical skills, and interactive demonstrations of what I can build.</p>
+
+      <div class="cta-buttons">
+        <a href="qualifications.html" class="cta-button">View My Qualifications</a>
+        <a href="demos.html" class="cta-button secondary">See My Demos</a>
+      </div>
+
+      <div id="installContainer" class="cta-buttons">
+        <button id="installBtn" class="cta-button">📱 Install to Home Screen</button>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>Gabriel (2024ST001) - Software Development Module Assignment - University of Staffordshire</p>
+  </footer>
+</div>
+
+<script>
+  /* Install Button Script: handles PWA 'beforeinstallprompt' and user install flow */
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+  const installContainer = document.getElementById('installContainer');
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredPrompt = event;
+    installContainer.classList.remove('hidden');
+    installBtn.disabled = false;
+  });
+
+  if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+          console.log('App installed successfully');
+          installContainer.classList.add('hidden');
+        } else {
+          console.log('App installation cancelled');
+        }
+        deferredPrompt = null;
+      }
+    });
+  }
+
+  window.addEventListener('appinstalled', () => {
+    installContainer.classList.add('hidden');
+  });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      installContainer.classList.add('hidden');
+    }
+  });
+</script>
+</body>
+</html>

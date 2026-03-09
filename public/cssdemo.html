@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <!-- Head: page metadata and demo-specific stylesheet linking -->
+  <title>CSS Demo Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gabriel's CSS demonstration showcasing styling techniques and responsive design">
+  <meta name="author" content="Gabriel">
+  <meta name="theme-color" content="#2c5aa0">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="basestyle.css">
+  <link rel="stylesheet" href="cssdemo.css" id="demoStylesheet">
+  
+  <style>
+    .stylesheet-switcher {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--color-primary);
+      color: #ffffff;
+      padding: 10px 15px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 300;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .stylesheet-switcher:hover {
+      background-color: var(--color-secondary);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Navigation: consistent site navigation used across pages -->
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="qualifications.html">Qualifications</a></li>
+        <li><a href="interest.html">Interests</a></li>
+        <li><a href="demos.html">Demos</a></li>
+        <li><a href="jsdemo.html">JavaScript Demo</a></li>
+        <li><a href="cssdemo.html">CSS Demo</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Header: identifies this page as a CSS playground with title and subtitle -->
+    <header>
+      <h1>CSS Playground</h1>
+      <h2>The Beauty of <abbr title="Cascading Style Sheets">CSS</abbr> Design</h2>
+    </header>
+    
+    <main>
+      <!-- Intro Section: explanation of the page purpose and authorship -->
+      <section class="intro-section">
+        <h2>A bit about this page</h2>
+        <p>My name is Gabriel and I am on the first year of Computer Science degree</p>
+        <p>A demonstration of what I can accomplish using vanilla CSS. This is part of my third assignment
+          in Software Development</p>
+      </section>
+
+      <!-- What is CSS: definition and references to standards -->
+      <section class="css-definition">
+        <h2>Cascading Style Sheets (CSS)</h2>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">MDN definition of CSS </a> is    </p>
+        <blockquote cite="https://developer.mozilla.org/en-US/docs/Web/CSS">
+          "a stylesheet language used to describe the presentation of a document written in HTML or XML (including XML dialects such as SVG, MathML or XHTML). CSS describes how elements should be rendered on screen, on paper, in speech, or on other media." (W3C(2022))
+        </blockquote>
+      </section>
+
+      <!-- Practical explanation of CSS, separation of concerns and modern features -->
+      <section class="what-is-css">
+        <h2>What is CSS</h2>
+        <p>CSS is for the styling of web content, such as colours and layout. It allows the look and feel of the web
+          content to change when on different types of devices with different sized screens, such as computers and mobile
+          phones</p>
+        <p>The separation of HTML from CSS makes it easier for the developer to maintain web applications as you can share
+          style sheets across your pages, and style the pages differently in different situations. This is referred to as
+          the separation of content from presentation.</p>
+        <p>CSS is made up of a number of <a href="https://www.w3.org/Style/CSS/current-work">different CSS
+            specifications.</a>, which are in these different statuses </p>
+        <ul>
+          <li>FPWD - First Public Working Draft</li>
+          <li>WD - Working Draft</li>
+          <li>CR - Candidate Recommendation</li>
+          <li>CRD - Candidate Recommendation Draft</li>
+          <li>PR - Proposed Recommendation</li>
+          <li>REC - Recommendation</li>
+          <li>SPSD - Superseded Recommendation</li>
+        </ul>
+        <p><a href="https://www.w3.org/Style/CSS/">Take a look at the CSS standards on the W3C site</a></p>
+      </section>
+
+      <!-- Inspiration: resources and examples that influenced this demo page -->
+      <section class="inspiration-section">
+        <h2>Where did this idea come from?</h2>
+        <p>Inspiration for the content on this page came from <a href="http://daveshea.com/projects/zen/">Dave Shea CSS Zen
+            Garden</a>and a modern take on this by <a href="https://stylestage.dev/">Stephanie Eckles Style Stage</a>. Do take a look at these to get
+          inspiration on what CSS can do now.</p>
+        <p>Places to look for CSS tips and tricks include the following:</p>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">MDN Web Docs CSS Pages</a></li>
+          <li><a href="https://web.dev/learn/css/">Web Dev Learn CSS</a></li>
+          <li><a href="https://moderncss.dev/">Modern CSS Solutions</a></li>
+          <li><a href="https://css-tricks.com/">CSS Tricks</a></li>
+        </ul>
+        <p>Some examples of modern CSS include:</p>
+        <ul>
+          <li>Flexbox</li>
+          <li>Grid</li>
+          <li>custom variables</li>
+          <li>@supports()</li>
+          <li>gradients</li>
+          <li>animation</li>
+          <li>3D transforms</li>
+          <li>subgrid</li>
+          <li>calc()</li>
+          <li>container queries</li>        
+        </ul>
+      </section>
+    </main>
+    
+    <footer>
+      <p>Gabriel (2024ST001) - Software Development Module Assignment - University of Staffordshire</p>
+    </footer>
+  </div>
+
+<!-- Stylesheet Switcher Button: toggles the demo stylesheet on/off and persists the choice -->
+<button class="stylesheet-switcher" id="styleSwitcher" title="Toggle between demo and normal style">🎨 Switch Style</button>
+
+<script>
+  // Stylesheet Switcher Functionality: toggles demo stylesheet and saves preference in localStorage
+  const styleSwitcher = document.getElementById('styleSwitcher');
+  const demoStylesheet = document.getElementById('demoStylesheet');
+  const storageKey = 'cssdemo-style-preference';
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedPreference = localStorage.getItem(storageKey);
+    if (savedPreference === 'normal') {
+      switchToNormalStyle();
+    } else {
+      switchToDemoStyle();
+    }
+  });
+
+  styleSwitcher.addEventListener('click', () => {
+    if (demoStylesheet.disabled) {
+      switchToDemoStyle();
+    } else {
+      switchToNormalStyle();
+    }
+  });
+
+  function switchToDemoStyle() {
+    demoStylesheet.disabled = false;
+    styleSwitcher.textContent = '🎨 Switch to Normal Style';
+    localStorage.setItem(storageKey, 'demo');
+    console.log('Switched to demo stylesheet');
+  }
+
+  function switchToNormalStyle() {
+    demoStylesheet.disabled = true;
+    styleSwitcher.textContent = '🎨 Switch to Demo Style';
+    localStorage.setItem(storageKey, 'normal');
+    console.log('Switched to normal stylesheet');
+  }
+</script>
+</html>

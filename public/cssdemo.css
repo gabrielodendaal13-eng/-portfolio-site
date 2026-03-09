@@ -1,0 +1,487 @@
+/* ========================================
+  CSS DEMO PAGE STYLES
+  Showcasing advanced CSS techniques
+  One-line: Page-specific styles demonstrating gradients, grid layouts and animations used on the CSS demo page.
+  ======================================== */
+
+/* ========================================
+   CSS VARIABLES - Demo Page Theme
+   ======================================== */
+
+:root {
+  --demo-primary: #FF6B6B;
+  --demo-secondary: #4D96FF;
+  --demo-accent: #FFD93D;
+  --demo-bg: #f8f9fa;
+  --demo-text: #2c3e50;
+  --demo-border: #dfe6e9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --demo-primary: #FF8C8C;
+    --demo-secondary: #6DB3FF;
+    --demo-accent: #FFE066;
+    --demo-bg: #1a1a1a;
+    --demo-text: #ecf0f1;
+    --demo-border: #34495e;
+  }
+}
+
+/* ========================================
+   DEMO PAGE - Override Base Navigation
+   ======================================== */
+
+.container {
+  flex-direction: column;
+}
+
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: linear-gradient(135deg, var(--demo-primary) 0%, var(--demo-secondary) 100%);
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  z-index: 200;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.main-nav ul {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style: none;
+  margin: 0;
+  gap: 0;
+  padding: 0;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.main-nav li {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.main-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 0;
+  padding: 0;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.main-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  transform: scale(1.05);
+}
+
+.main-nav a[aria-current="page"] {
+  background-color: var(--demo-accent);
+  color: var(--demo-text);
+  font-weight: 900;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Adjust body to account for fixed nav */
+body {
+  padding-top: 50px;
+}
+
+/* ========================================
+   DEMO PAGE - Custom Header
+   ======================================== */
+
+header {
+  background: linear-gradient(135deg, var(--demo-secondary) 0%, #667eea 100%);
+  color: #ffffff;
+  padding: 3rem 1rem;
+  text-align: center;
+  border: none;
+  margin-bottom: 0;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(77, 150, 255, 0.3);
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header h1 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header h2 {
+  color: #ffffff;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+
+/* ========================================
+   GRID LAYOUT FOR SECTIONS (4+ items)
+   ======================================== */
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 2rem 1rem;
+}
+
+section {
+  margin-bottom: 0;
+  padding: 2rem;
+  background-color: var(--demo-bg);
+  border-radius: 10px;
+  border-left: 5px solid;
+  animation: fadeIn 0.6s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.intro-section {
+  border-left-color: var(--demo-primary);
+  background: linear-gradient(135deg, var(--demo-bg) 0%, rgba(255, 107, 107, 0.08) 100%);
+}
+
+.css-definition {
+  border-left-color: var(--demo-secondary);
+  background: linear-gradient(135deg, var(--demo-bg) 0%, rgba(77, 150, 255, 0.08) 100%);
+}
+
+.what-is-css {
+  border-left-color: var(--demo-accent);
+  background: linear-gradient(135deg, var(--demo-bg) 0%, rgba(255, 217, 61, 0.08) 100%);
+}
+
+.inspiration-section {
+  border-left-color: #00d4ff;
+  background: linear-gradient(135deg, var(--demo-bg) 0%, rgba(0, 212, 255, 0.08) 100%);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section h2 {
+  color: var(--demo-primary);
+  border: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--demo-primary), #667eea);
+}
+
+/* ========================================
+   TYPOGRAPHY FOR DEMO PAGE
+   ======================================== */
+
+section p {
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+section a {
+  color: var(--demo-secondary);
+  font-weight: 600;
+  position: relative;
+  text-decoration: none;
+}
+
+section a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--demo-secondary);
+  transition: width 0.3s ease;
+}
+
+section a:hover::after {
+  width: 100%;
+}
+
+blockquote {
+  border-left: 5px solid var(--demo-secondary);
+  padding: 1.5rem;
+  background-color: rgba(77, 150, 255, 0.1);
+  border-radius: 5px;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--demo-text);
+}
+
+/* ========================================
+   LIST STYLING (Ultra-responsive)
+   ======================================== */
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+li {
+  padding: 0.75rem 0;
+  padding-left: 2rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+li::before {
+  content: '▶';
+  position: absolute;
+  left: 0;
+  color: var(--demo-secondary);
+  font-size: 0.75rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ========================================
+   FOOTER WITH ANIMATION
+   ======================================== */
+
+footer {
+  background: linear-gradient(135deg, var(--demo-primary) 0%, var(--demo-secondary) 100%);
+  color: #ffffff;
+  margin-top: 3rem;
+  padding: 2rem;
+  border-top: none;
+  text-align: center;
+  border-radius: 15px 15px 0 0;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+}
+
+footer p {
+  color: #ffffff;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+/* ========================================
+   MEDIA QUERIES - Tablet (768px+)
+   Demonstrating Grid Layout Changes
+   ======================================== */
+
+@media (min-width: 768px) {
+  main {
+    grid-template-columns: 1fr 1fr;
+    padding: 2rem;
+    gap: 2.5rem;
+  }
+  
+  header {
+    grid-column: 1 / -1;
+    padding: 4rem 2rem;
+  }
+  
+  head h1 {
+    font-size: 3rem;
+  }
+  
+  section {
+    padding: 2.5rem;
+  }
+  
+  /* Ensure last section spans properly */
+  .inspiration-section {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ========================================
+   MEDIA QUERIES - Desktop (1024px+)
+   Advanced Grid with 4 Columns
+   ======================================== */
+
+@media (min-width: 1024px) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem;
+    gap: 3rem;
+  }
+  
+  header {
+    grid-column: 1 / -1;
+    padding: 5rem 3rem;
+    border-radius: 20px;
+  }
+  
+  header h1 {
+    font-size: 3.5rem;
+  }
+  
+  header h2 {
+    font-size: 1.5rem;
+  }
+  
+  section {
+    padding: 3rem;
+  }
+  
+  .intro-section {
+    grid-column: 1 / 2;
+    grid-row: 2;
+  }
+  
+  .css-definition {
+    grid-column: 2 / 3;
+    grid-row: 2;
+  }
+  
+  .what-is-css {
+    grid-column: 1 / 2;
+    grid-row: 3;
+  }
+  
+  .inspiration-section {
+    grid-column: 2 / 3;
+    grid-row: 3;
+  }
+  
+  footer {
+    grid-column: 1 / -1;
+    border-radius: 0 0 15px 15px;
+  }
+}
+
+/* ========================================
+   ANIMATIONS & TRANSITIONS
+   ======================================== */
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+section:nth-child(odd) {
+  animation: slideInFromLeft 0.6s ease-out;
+}
+
+section:nth-child(even) {
+  animation: slideInFromRight 0.6s ease-out;
+}
+
+/* ========================================
+   ACCESSIBILITY & REDUCED MOTION
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Alternative fonts with fallbacks */
+main, section, p, li {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header h1, header h2 {
+  font-family: 'Trebuchet MS', 'Arial Black', sans-serif;
+}
+
+section h2 {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  .main-nav {
+    display: none;
+  }
+  
+  header {
+    box-shadow: none;
+  }
+  
+  section {
+    page-break-inside: avoid;
+  }
+}

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /icons/
+
+Sitemap: https://your-firebase-domain.web.app/sitemap.xml
+
+# Allow search engine crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

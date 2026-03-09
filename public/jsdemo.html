@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <!-- Head: metadata and local styles for the JS demo page -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gabriel's JavaScript demonstration showcasing vanilla JS skills">
+  <meta name="author" content="Gabriel">
+  <meta name="theme-color" content="#2c5aa0">
+  <link rel="manifest" href="manifest.json">
+  <title>My JavaScript Demo</title>
+  <link rel="stylesheet" href="basestyle.css">
+  <style>
+    /* JS Demo specific styles */
+    .demo-container {
+      background-color: var(--color-light-bg);
+      padding: var(--spacing-lg);
+      border-radius: 0.5rem;
+      margin: var(--spacing-lg) 0;
+      border: 2px solid var(--color-primary);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+      margin: var(--spacing-lg) 0;
+    }
+
+    @media (min-width: 768px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 0.5rem;
+      padding: var(--spacing-lg);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--color-primary);
+    }
+
+    input, select, button {
+      font-family: var(--font-primary);
+      margin: var(--spacing-sm) 0;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border: 1px solid var(--color-border);
+      border-radius: 0.25rem;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+    }
+
+    button {
+      background-color: var(--color-primary);
+      color: #ffffff;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+
+    button:hover, button:focus {
+      background-color: var(--color-secondary);
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+
+    input, select {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .output {
+      background-color: var(--color-light-accent);
+      padding: var(--spacing-md);
+      border-radius: 0.25rem;
+      margin-top: var(--spacing-md);
+      border-left: 4px solid var(--color-primary);
+    }
+
+    .drawing-canvas {
+      width: 100%;
+      height: 300px;
+      background-color: var(--color-bg);
+      border: 2px solid var(--color-border);
+      border-radius: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-md);
+      align-content: flex-start;
+    }
+
+    .drawing-item {
+      width: 40px;
+      height: 40px;
+      background-color: var(--color-primary);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .drawing-item:hover {
+      transform: scale(1.2);
+      background-color: var(--color-accent);
+    }
+
+    .data-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .data-item {
+      padding: var(--spacing-md);
+      margin: var(--spacing-sm) 0;
+      background-color: var(--color-light-bg);
+      border-left: 4px solid var(--color-primary);
+      border-radius: 0.25rem;
+    }
+
+    .svg-demo {
+      text-align: center;
+      padding: var(--spacing-lg);
+      background-color: var(--color-light-bg);
+      border-radius: 0.5rem;
+      margin: var(--spacing-lg) 0;
+    }
+
+    svg {
+      transition: all 0.3s ease;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- Navigation: site links for quick access to other pages -->
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="qualifications.html">Qualifications</a></li>
+      <li><a href="interest.html">Interests</a></li>
+      <li><a href="demos.html">Demos</a></li>
+      <li><a href="jsdemo.html">JavaScript Demo</a></li>
+      <li><a href="cssdemo.html">CSS Demo</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header: demo title and short subtitle describing the demo's purpose -->
+  <header>
+    <h1>JavaScript Demonstration</h1>
+    <h2>Vanilla JavaScript Skills Showcase</h2>
+  </header>
+
+  <main>
+    <!-- Introduction: brief explanation of what the demo page showcases -->
+    <section class="demo-container">
+      <h2>About This Demo</h2>
+      <p>This page demonstrates my vanilla JavaScript skills including DOM manipulation, event handling, API integration, and data processing. All JavaScript is written without frameworks or libraries.</p>
+    </section>
+
+    <!-- Demo Cards Grid: container holding interactive demo cards for each feature -->
+    <div class="card-grid">
+      <!-- Calculator Card: form-based calculator demonstrating event handling and DOM updates -->
+      <div class="card">
+        <h3>Interactive Calculator</h3>
+        <p>Enter two numbers and select an operation:</p>
+        <form id="calculatorForm">
+          <input type="number" id="num1" placeholder="First number" required>
+          <input type="number" id="num2" placeholder="Second number" required>
+          <select id="operation">
+            <option value="add">Add (+)</option>
+            <option value="subtract">Subtract (-)</option>
+            <option value="multiply">Multiply (×)</option>
+            <option value="divide">Divide (÷)</option>
+            <option value="power">Power (^)</option>
+          </select>
+          <button type="submit">Calculate</button>
+        </form>
+        <div id="calculatorOutput" class="output hidden">
+          <strong>Result:</strong> <span id="resultValue"></span>
+        </div>
+      </div>
+
+  <!-- Random Shape Generator Card: creates and places shapes dynamically in the canvas -->
+  <div class="card">
+        <h3>Random Shape Generator</h3>
+        <p>Generate random shapes with random sizes and positions:</p>
+        <button id="generateShapeBtn">Generate Shape</button>
+        <button id="clearShapesBtn">Clear All</button>
+        <div id="shapeCount" class="output hidden">
+          <strong>Shapes Created:</strong> <span id="shapeCountValue">0</span>
+        </div>
+        <div id="drawingCanvas" class="drawing-canvas"></div>
+      </div>
+
+  <!-- SVG Animation Card: interactive SVG elements manipulated by JavaScript -->
+  <div class="card">
+        <h3>Interactive SVG Animation</h3>
+        <p>Click the buttons to animate the SVG elements:</p>
+        <div class="svg-demo">
+          <svg width="200" height="200" viewBox="0 0 200 200" id="animatedSvg">
+            <circle id="circle1" cx="100" cy="100" r="30" fill="#2c5aa0" opacity="0.7"></circle>
+            <rect id="square1" x="50" y="50" width="60" height="60" fill="#4D96FF" opacity="0.7"></rect>
+            <polygon id="triangle1" points="100,30 150,150 50,150" fill="#FFD93D" opacity="0.7"></polygon>
+          </svg>
+        </div>
+        <button id="rotateBtn">Rotate</button>
+        <button id="colorChangeBtn">Change Colors</button>
+      </div>
+
+  <!-- Data Display Card: loads internal JSON and renders a list of items -->
+  <div class="card">
+        <h3>Programming Languages</h3>
+        <p>Data loaded from internal JSON:</p>
+        <button id="loadDataBtn">Load Languages</button>
+        <ul id="dataList" class="data-list hidden"></ul>
+      </div>
+
+  <!-- Love Calculator Card: example of making an external API call and displaying results -->
+  <div class="card">
+        <h3>Love Calculator API</h3>
+        <p>Test compatibility with an external API:</p>
+        <input type="text" id="firstName" placeholder="First name" maxlength="20">
+        <input type="text" id="secondName" placeholder="Second name" maxlength="20">
+        <button id="loveCalcBtn">Check Compatibility!</button>
+        <div id="loveOutput" class="output hidden">
+          <strong id="loveResult"></strong>
+          <p id="loveDescription"></p>
+        </div>
+      </div>
+
+  <!-- To-Do List Card: simple CRUD UI storing tasks and updating counts -->
+  <div class="card">
+        <h3>Simple To-Do List</h3>
+        <p>Add tasks and track your progress:</p>
+        <form id="todoForm">
+          <input type="text" id="todoInput" placeholder="Enter a task..." maxlength="50">
+          <button type="submit">Add Task</button>
+        </form>
+        <ul id="todoList" class="data-list"></ul>
+        <div id="todoCount" class="output hidden">
+          <strong>Total Tasks:</strong> <span id="todoCountValue">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature List: short enumeration of JS concepts used across the demos -->
+    <section class="demo-container">
+      <h2>JavaScript Features Demonstrated</h2>
+      <ul>
+        <li><strong>DOM Access:</strong> getElementById, querySelector, querySelectorAll</li>
+        <li><strong>Event Handling:</strong> Event listeners on forms, buttons, and inputs</li>
+        <li><strong>Form Processing:</strong> Reading and validating form inputs</li>
+        <li><strong>Math Operations:</strong> Calculations using Math object (random, ceil, etc.)</li>
+        <li><strong>Conditionals:</strong> If/else statements for logic branching</li>
+        <li><strong>Loops:</strong> For loops and array iteration</li>
+        <li><strong>SVG Manipulation:</strong> Changing SVG attributes and applying animations</li>
+        <li><strong>Array Methods:</strong> map(), filter(), forEach() for data processing</li>
+        <li><strong>Async/Await:</strong> Fetching data from external APIs</li>
+        <li><strong>JSON Parsing:</strong> Processing JSON data from internal and external sources</li>
+        <li><strong>CSS Class Manipulation:</strong> Adding/removing classes for styling</li>
+        <li><strong>Local Storage:</strong> Persistent data storage in browser</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Gabriel (2024ST001) - Software Development Module Assignment - University of Staffordshire</p>
+  </footer>
+</div>
+
+<script src="jsdemo.js"></script>
+</body>
+</html>

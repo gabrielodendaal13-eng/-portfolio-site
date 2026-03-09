@@ -1,0 +1,34 @@
+{
+  "languages": [
+    {
+      "name": "Python",
+      "proficiency": 85,
+      "experience": "2 years"
+    },
+    {
+      "name": "JavaScript",
+      "proficiency": 80,
+      "experience": "1.5 years"
+    },
+    {
+      "name": "Java",
+      "proficiency": 75,
+      "experience": "1 year"
+    },
+    {
+      "name": "HTML5",
+      "proficiency": 90,
+      "experience": "2 years"
+    },
+    {
+      "name": "CSS3",
+      "proficiency": 88,
+      "experience": "2 years"
+    },
+    {
+      "name": "SQL",
+      "proficiency": 70,
+      "experience": "6 months"
+    }
+  ]
+}
